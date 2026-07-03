@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Vector Map</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			body.vector_map #header {
+				background-image: url("images/bus_line_70_with_isochrone.png");
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 185%;
+				min-height: 100vh;
+                filter: saturate(0.5);
+			}
+		</style>
+	</head>
+	<body class="no-sidebar is-preload vector_map">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header style="color: #ffffff;">
+							<h1><a href="index.html" id="logo" style="color: #ffffff;">Vector Map</a></h1>
+									<h2 style="text-align: center; color: #ffffff !important; font-size: 1.5em;"><strong> </strong></h2>
+											<p style="text-align: center; color: #ffffff !important;"> A vector map of walking distances to bus stops and comparative analysis of bus routes in Waltham and Lexington.</p>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">My projects</a>
+									<ul>
+										<li><a href="no-sidebar.html">Choropleth Map</a></li>
+										<li><a href="elevation_map.html">Relative Elevation Map</a></li>
+										<li><a href="vegetation_indices.html">Vegetation Indices Map</a></li>
+										<li><a href="vector_map.html">Vector Map</a></li>
+										<li><a href="land_use_classification_map.html">Land Use Classification</a></li>
+                                        <li><a href="multi_criteria_analysis.html">Multi-Criteria Analysis</a></li>
+										
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<p style="color: #075b46; text-align: center; font-size: 20px">
+									
+								</p>
+							</header>
+									<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+											<h2 style="color: #075b46; text-align: center; font-size: 20px; margin-bottom: 25px">What did I create, and why?</h2>
+<p>The spatial question I am trying to answer is a comparison of available public transportation between two neighbourhoods in the USA. The inspiration for this topic came from my time living in Lexington, USA. I had many coworkers from Waltham who had to carpool together each morning because there was no public transport alternative: no bus stop, incorrect route, wrong time, or too unreliable. I wanted to learn more about bus stops in Waltham, and decided to compare the data to that of Lexington, since I suspected there would probably be a difference. Lexington and Waltham have a large income gap. Lexington has been ranked the second safest and richest town in the entire United States, with an average income of about $300,000. On the other hand, the average income in Waltham is about $120,000, which is certainly not low, but less than half of its neighbouring town. 
+</p>
+<p> My initial spatial data question was: is there a difference in the number of residences within a 10 minute walking range from bus stops between Waltham and Lexington, but this question very quickly transformed once I got partway through the process. Instead, I ended up focusing much more on the difference between bus line and public transit availability within both towns, so it transformed into a combination of qualitative (referencing if certain bus lines/bus stops were reliable and still in service based on people’s experiences and knowledge) and quantitative, such as the literal count of the bus stops. 
+</p>
+
+
+										</div>
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+                                            <img src="images/help.png " alt="Bus stops comparison" style="width:100%; height:auto; display:block; margin-top:1rem;" />
+                                        </div>
+                                    </div>
+								<hr />
+								<p>For this project, I started by choosing my ROI (regions of interest) and downloading the basic urban map data for both locations. I chose both Lexington and Waltham in Massachusetts, so I utilized QuickOSM software to download the building data. QuickOSM is based on open data made available by the government, and generally covers all sorts of amenities. Every type of building and land use, such as schools, cemeteries or train stations, are categorized and organized in order to be used as an analysis tool. From here, I selected other data to download: bus stops. After creating two point layers for each ROI, I used the ORM tools to create isochrone layers for both point layers, consisting of 1, 5 and 10 minutes of walking distance. Considering the USA in general, and especially towns, are not designed for walking and generally more spread out, I felt 10 minutes was necessary for more realistic results. 
+</p>							<hr />
+                                <p></p>
+				    
+							<h2 style="color: #075b46; text-align: center; font-size: 20px; margin-bottom: 25px; margin-top: 25px"> Creating the vector map </h2>
+							<div class="two-column-layout" style="display:flex; flex-wrap:wrap; gap:2rem; align-items:start; justify-content:center;">
+								<div class="column" style="flex:1 1 320px; max-width:600px;">
+									<h3 style="color: #075b46; text-align: left; font-size: 15px; margin-bottom: 15px">From my map, a few key points become clear.</h3>
+									<p>I started with mapping out the isochrone layers for Waltham, and it was interesting to observe. From the results, it would seem that the majority of residences do indeed fall within a 10 minute walking range. There are a few exceptions, but when the walking time was reduced to 5 minutes, naturally the amount of residences within range also reduced significantly. However, I found these results to be rather misleading – it constructed a view of Waltham and Lexington’s public transportation system that I knew to be untrue. 
+									</p>
+									<p>In 2024 to 2025, I lived in Lexington for a year, without a car. That meant I relied solely on my bike and public transportation – but there was no public transportation to take me to Waltham, which I frequented a couple times a week: so I biked everywhere instead. This may seem to be more of a representation of the US public transportation system, however, even if this may be the case, I believe the difference in accessibility is still visible. Lexington even has its very own personal bus line that travels all over Lexington, the Lexpress. Combined with the MBTA (routes 61, 62, 76, 77, 78, 350), GRID/REV buses (to Alewife Subway), as well as LRTA (Lowell* Regional Transport Authority). In comparison, Waltham only has two bus routes in total: MBTA 61 and 70, with 61 being written off as inconsistent and out of service majority of the time. 
+</p>
+<p style="color:rgb(0, 0, 0); font-size: 12px;"> *Lowell is a neighbouring town. LRTA has a few stops near the border/edge of Lexington.
+</p>
+								</div>
+								<div class="column" style="flex:1 1 320px; max-width:480px;">
+									<img src="images/mental_damage.png" alt="Vector Map Example" style="width:100%; height:auto; display:block; border:1px solid #ddd;" />
+							</div>
+						</div>
+						<hr />
+						<p>
+Based upon this further research, I decided to shift my analysis slightly. Bus stops as an indicator is not entirely representative, bus lines however, are a better indicator. After some digging around the official MBTA website as well as people’s online experiences with bus lines on forums, I discovered that there are only two bus lines that run with any sort of consistency in Waltham: line 61 and line 70 – with only bus line 70 coming frequently and being considered as a ‘reliable’ transportation option. Both go into Boston. Not a single bus line (and therefore bus stop) in Waltham directly connects to Lexington. 
+I have a couple different maps to reflect the research steps I took to further analyze my results. 
+
+</p>
+             
+						<div class="row">
+							<article class="col-4 col-12-mobile special">
+														<a href="#" class="image featured"><img src="images/bus_line_70_with_isochrone.png" alt="" style="width:100%; height:250px; object-fit:cover;" /></a>
+													</article>
+													<article class="col-4 col-12-mobile special">
+														<a href="#" class="image featured"><img src="images/wal_routes_dots_yellow_line.png" alt="" style="width:100%; height:250px; object-fit:cover;" /></a>
+													</article>
+													<article class="col-4 col-12-mobile special">
+														<a href="#" class="image featured"><img src="images/lex_routes_just_dots.png" alt="" style="width:100%; height:250px; object-fit:cover;" /></a>
+													</div>
+								<p>Waltham has 263 total bus stops. I counted  855 residences within 10 minute isochrone. However, when older or unreliable bus lines are removed, only line 70 on Main Street remains as a good option for a worker’s commute. Line 70 holds roughly 44 bus stops, which is a step down from the 263 total bus stops in Waltham. Then, it can be more easily visualized that only one part of Waltham is within a 10 minute walking radius of a reliable bus station or bus line, while a large portion falls outside of these isochrones. This indicates that despite the initial appearance of the map, public transportation isn’t as widely accessible as the original bus stop count would imply. 
+</p>
+<p>Lexington has 421 total bus stops, excluding the Lexpress. I did not calculate the isochrone for Lexington, as I shifted my focus to comparing the number of reliable bus routes instead. In Lexington, I lined the different bus routes to indicate which parts are being reached to create a clearer picture of the stark differences between the two towns. 
+</p>
+<hr /> 
+<p style="color:#075b57; font-size: 22px; text-align: center;"> So, let's identify the key issue here: Lack of access to reliable public transportation options to surrounding towns (e.g. buses between Waltham and Lexington) 
+</p>
+	<hr />		
+					<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+						<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<h2 style="color: #075b57; text-align: center; font-size: 20px; margin-bottom: 25px"> Why does this matter? </h2>
+
+							<p style="font-size: 15px" > Although I know this vector map is not representative, this seemingly insignificant topic is important to me. I know some of my closest (and dearest!) colleagues struggled to find their way to and from work: hitching rides, carpooling with the one coworker in Waltham who did own a car, calling Ubers every single day. When working 10 hour shifts earning minimum wage, being forced to spend 2 hours (coming and going) of that pay on transportation can be devastating. It truly does add up quickly: $37* a day, working five days? That’s potentially a minimum loss of $170 every single week. I believe constructing more detailed isochrone maps through isolating the line 70 – I attempted this, but could not quite figure out how to set the parameters correctly, it kept giving me errors – will give a better indicator of how many residences are actually able to benefit from the bus lines. I believe this data as a whole reveals that the lack of public transportation infrastructure in Waltham has resulted in flawed and unreliable bus routes, which robs workers trying to commute to surrounding towns (such as Lexington) of a cheap and consistent transportation option. 
+							</p>
+							<p>
+							*Based on Uber prices, these may vary based on time of day and exact location. I choose the cheapest option, so consider these results as a minimum. It could easily reach over $200 a week on transportation. 
+							</p>
+						</div>
+						<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<img src="images/bus_routes_wal.png" alt="Bus Routes in Waltham" style="width:100%; height:auto; display:block; margin-top:1rem;" />
+						</div>
+					</div>
+					<hr />
+<div style="max-width:700px; margin:0 auto;">
+						<h2 style="color: #075b57; text-align: center; font-size: 20px; margin-bottom: 25px"> Potential Solutions </h2>
+                                        
+											<p style="font-size: 15px" > 
+												Another bus line that eases the transition between Waltham and Lexington. I, myself, didn’t have a car, so I had to bike. There is no proper bike path, and I had to bike next to a highway to make it. Public transportation is necessary, particularly between towns. So this is something the government could attempt to address. Beyond simply increasing the amount of stops of a bus line to include more residents, it is of much higher importance to attempt to construct a bus line that connects the two towns. One solution, for example, would be to add to the pre-existing bus routes. This naturally has its downsides – a longer commute time for other people, for example, but it would require less change. 
+	</p>
+	<p>			
+Realistically, the USA has a below average public transportation system, and part of this can be fairly attributed to the layout, as many houses, towns and other buildings are so wide spread, that it is impossible to keep all parts of a region accessible. The same can be said for the connection between Waltham and Lexington, as in both cases, the public transport commute into Boston is prioritized: Waltham has a train station straight into Boston, while Lexington offers a bus route to Alewife subway station. However, I would argue that the predominant difference is each town’s capacity to mitigate this public transportation gap. Lexington has created its own small bus line that goes all over the town, in order to avoid rendering certain parts of the town as inaccessible. On the other hand, Waltham does not have a similar solution, in fact, there have been no efforts by the municipality to work on this issue. 
+	</p>
+ <p> Another easy fix that would at least improve general public transportation in Waltham, would be to reinstate Line 61 to its previous status. Since it has now been deemed “unreliable” by the general public, that creates a negative feedback loop of commuters taking that bus line – or any bus – to work. 
+</p>
+										</div>
+                                    </div>
+									<hr />
+							
+								
+					
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

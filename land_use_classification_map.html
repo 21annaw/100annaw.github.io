@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Land Use Classification Maps</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+         <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+        <style>
+            body.land_use_classification_map #header {
+                background-image: url("images/unsup_object_pink.png");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 150%;
+                min-height: 100vh;
+            }
+            body.land_use_classification_map #header .inner {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                text-align: center;
+                padding: 3rem 1rem;
+            }
+            body.land_use_classification_map #header .inner header {
+                width: 100%;
+            }
+        </style>
+	</head>
+	<body class="land_use_classification_map is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+						<header style="color: #ffffff; ">
+							<h1><a href="index.html" id="logo" style="color: #ffffff;">Land Use Classification Map</a></h1>
+							<h2 style="color: #ffffff !important; font-size: 1.5em;"><strong> Land Use Classification Map</strong></h2>
+							<p style="color: #ffffff !important;"><strong> Using different classification algorithms, I created supervised and unsupervised land cover classification maps of Utrecht. </strong> </p>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">My projects</a>
+									<ul>
+										<li><a href="no-sidebar.html">Choropleth Map</a></li>
+										<li><a href="elevation_map.html">Relative Elevation Map</a></li>
+										<li><a href="vegetation_indices.html">Vegetation Indices Map</a></li>
+										</li>
+										<li><a href="vector_map.html">Vector Map</a></li>
+                                        <li><a href="land_use_classification_map.html">Land Use Classification Map</a></li>
+                                        <li><a href="multi_criteria_analysis.html">Multi-Criteria Analysis</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<p style="color: #993317; text-align: center; font-size: 23px">
+									How does map classification work? 
+                                    </p>
+								<img src="images/science_park_land.png" alt="REM Map Example" style="width:100%; height:auto; display:block;" />
+                                <p style="color:black; text-align: left; font-size: 15px"> Land cover classification is the process of assigning a specific land class (water, urban, residential, forest) to each pixel of collected data. Satellite imagery, datasets with labels and auxiliary data are commonly used. For example, Sentinel 2 satellite data, which is also used for Vegetation Indices calculations. Land cover classification is a complicated and highly detailed process, which is precisely why automated land cover classification has been growing in popularity over the past few years. Instead of spending long hours individually classifying each pixel, the process has been automated using different Machine Learning Algorithms. 
+There are two distinguishable types of classification: supervised and unsupervised.</p>
+<p style="color:black; text-align: left; font-size: 15px">Supervised classification is based on training data of each class that must be inputted before the classification takes place. Essentially, the system requires a training data sample of the spectral signature of the class “water”, which the algorithm then uses to classify other pixels as water. </p>
+<p style="color:black; text-align: left; font-size: 15px">
+On the other hand, unsupervised classification does not require prior training data, instead it analyzes clustering in order to group pixels into classes. This does require posthumous labeling of each group as the correct land cover class, as the algorithm cannot assign the groups it has created into specific land classes. 
+</p>
+<p style="color:black; text-align: left; font-size: 15px">Each type has its positives and negatives. Generally speaking, supervised classification is slower and more involved, but offers more fine-grained and accurate results. It is best when previous training data and knowledge of all classes exists. Unsupervised classification is faster and less involved, but offers coarser results. It’s best employed to explore and research when it is unclear exactly what all the available classes or options are. 
+
+
+</p>
+<hr />
+                            </header>
+									<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<img src="images/spectral_profile.png" alt="REM Map Example" style="width:100%; height:auto; display:block;" />
+                                        </div>
+						<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<h2 style="color: #993317; text-align: center; font-size: 20px; margin-bottom: 25px">Creating a spectral signature chart</h2>
+                                            <p> One of the first steps I took was to create a spectral profile through sampling different land cover types on the map. The sentinel composite chosen is from Utrecht Science Park. The spatial resolution of this specific sentinel composite is 18.36 meters in length and 17.72 meters in width per pixel. As can be seen within the graph, different land types have different values attached to them. These distinguishing spectral values is precisely what allows for the land classification process and analysis to occur. </p>
+						</div>
+					</div>
+					<hr /> 
+
+					<div class="container">
+						<article id="main" class="special">
+									<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+											<h2 style="color: #993317; text-align: center; font-size: 20px; margin-bottom: 25px">Unsupervised Classification</h2>
+											<p>I performed both the unsupervised and supervised land classification processes twice. For the unsupervised classification, I got similar results both times. The first part is pixel-based, which indicates that each pixel is individually classified based on its spectral signature. The second row is object based, which is when pixels are grouped into objects, and the overall spectral signature from that cluster is assigned a class and thus classified. It is based on the assumption that a house consisting of different “Urban” pixels is going to be entirely urban – it wouldn’t make sense to have a pixel classified as water in a house. Since this is an unsupervised process, it requires the user to classify the different groups it has created later on. It was interesting to note how the algorithm came up with 4 different classes – however, my previous issue of including the rivers and water sources as a part of the “Urban” class returned once again. 
+</p>															
+										</div>
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+											<img src="images/unsup_class_2nd.png" alt="REM Map Example" style="width:100%; height:auto; display:block;" />
+                                        </div>
+                                    </div>
+
+                <div class="row" style="margin-top: 20px;">
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/unsup_class_2nd.png" alt="Unsupervised Classifcation with Pixels" /></a>
+								<header>
+									<h3 style="color: #990952;"> Unsupervised, Attempt 2 (Pixel) </h3>
+								</header>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/object_unsup_pink.png" alt="" /></a>
+								<header>
+									<h3 style="color: #990952;"> Unsupervised, Attempt 2 (Object) </h3>
+								</header>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/object_unsup.png" alt="" /></a>
+								<header>
+									<h3 style="color: #990952;"> Unsupervised, Attempt 2 (Object), Alternative Color Scheme</h3>
+								</header>
+							</article>
+                            
+<hr /> 
+					<div class="container">
+						<article id="main" class="special">
+									<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+											<h2 style="color: #993317; text-align: center; font-size: 20px; margin-bottom: 25px">Supervised Classification</h2>
+<p>For the supervised land classification process, I believe my results the second time were better. During my first attempt, I didn’t have enough proper samples for my training samples that I inputted, so the algorithm was unable to classify water as a separate class, for example. However, I made sure to take roughly 15-20 samples per each land type I chose the next time, and I do believe it helped make my results more accurate. Unlike the unsupervised algorithms, the supervised version can distinguish between water and urban areas, and didn’t make mistakes such as placing an agricultural area in the middle of Utrecht Center. Compared to my first attempt at a supervised classification, this attempt was a huge improvement. 
+</p>															
+										</div>
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+											<img src="images/sup_class_2.png" alt="REM Map Example" style="width:100%; height:auto; display:block;" />
+                                        </div>
+                                    </div>
+
+                <div class="row" style="margin-top: 20px;">
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/sup_class_1.png" alt="" /></a>
+								<header>
+									<h3 style="color: #990952;"> Supervised, Attempt 1 </h3>
+								</header>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/sup_class_2.png" alt="" /></a>
+								<header>
+									<h3 style="color: #990952;"> Supervised, Attempt 2  </h3>
+								</header>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="images/sup_land_purple_color.png" alt="" /></a>
+								<header>
+									<h3 style="color: #990952;"> Supervised, Attempt 2 - Alternate Color Scheme </h3>
+								</header>
+							</article>
+                            
+        <div class="row" style="margin-top: 20px;">
+			<hr />
+		
+                            </header>
+									<div class="two-column-layout" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem; justify-content:center;">
+										<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<img src="images/NDVI map.png" alt="REM Map Example" style="width:100%; height:auto; display:block;" />
+                                        </div>
+						<div class="column" style="flex:1 1 320px; max-width:550px;">
+							<h2 style="color: #993317; text-align: center; font-size: 20px; margin-bottom: 25px">NDVI</h2>
+							<p> The color scheme I choose ranges from blue (representing water, as values under 0 in NDVI typically indicate bodies of water), to a light orange. I was attempting to create an NDVI indicator that would also accurately indicate where the urban areas are, as to create a sort of combination between NDVI and the other land use classification system maps. I would like this map to be readable in a practical sense. Therefore, healthy vegetation is indicated with darker green, while unhealthy vegetation is indicated by a lighter yellow color. This still stands out, and would allow for practical application. To avoid confusion, the grey represents urban buildings, in order to distinguish between vegetation and other sorts of landuse. The target audience, in this instance, would therefore be an average citizen, perhaps a farmer, but generally someone who would also benefit from distinguishing the entire overall picture – including vegetation health, but also the other aspects of an area such as location of urban development and bodies of water. 
+
+</p>
+						</div>
+					</div>
+					<hr /> 
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<p style="color: #993317; text-align: center; font-size: 23px">
+									Reflection
+                                    </p>
+                                <p style="color:black; text-align: left; font-size: 15px"> Each of the methods had their own strengths and weaknesses. I believe I got my best, most accurate result from my second attempts at both methods of classification. The strength of the unsupervised method is that it doesn't require much input from the user to produce good results, however it still mixed up some land cover types in numerous ways, such as combining urban and water into one, or scattering some open field or agriculture pixels into the urban area. I did enjoy the level of detail, I felt as though the unsupervised version did a much better job at rendering the detailed star shapes of the forested area and the fort in Utrecht. While the supervised version did show the rings, it didn’t actually have quite the level of detail in the shape as the unsupervised version, which surprised me. The object version of the unsupervised version was also highly interesting, as it fragmented everything. I do believe this could be useful, particularly for spatial planning through indicating what sort of objects or sections already exist, but it does lose a lot of valuable detail. The supervised version was much more accurate when it came to these sorts of mistakes, it was able to more accurately decipher and classify land cover types. I did feel as though it lacked some variety in some locations, and it does look a bit too blocky to be visually appealing for the general public. I believe the supervised map would benefit from a 3D rendering addition, or a shadow DSM of some sort, in order to make it more textured and interesting. In general,  I believe my second attempt at the supervised classification is likely my favorite – it is the most work, but it has the fewest mistakes. 
+
+I did attempt to create a Confusion Matrix, but unfortunately ArcGIS Online couldn’t process it. </p>
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
